@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Not Found - We Gotcha Served LLC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9fafb;
+      box-sizing: border-box;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: white;
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      color: #0284c7;
+      margin-bottom: 1rem;
+    }
+    p {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #0284c7;
+      color: white;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn-outline {
+      background-color: transparent;
+      color: #0284c7;
+      border: 1px solid #0284c7;
+    }
+    .success-message {
+      background-color: #ecfdf5;
+      border-left: 4px solid #10b981;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      text-align: left;
+    }
+    #redirectMessage {
+      display: none;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .pulse {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="formSubmittedMessage" style="display: none;">
+      <h1>Your Form Was Submitted Successfully!</h1>
+      <div class="success-message">
+        <p><strong>Your documents have been received.</strong> We're redirecting you to the confirmation page...</p>
+      </div>
+      <p id="redirectMessage" class="pulse">Redirecting to the Thank You page in <span id="countdown">3</span> seconds...</p>
+    </div>
+
+    <div id="normalErrorPage">
+      <h1>Page Not Found</h1>
+      <p>Sorry, the page you're looking for doesn't exist or has been moved.</p>
+      <p>If you were uploading documents, don't worry! Your submission was likely received successfully. Please navigate to one of the following pages:</p>
+
+      <div class="buttons">
+        <a href="/" class="btn">Return Home</a>
+        <a href="/upload/thank-you" class="btn btn-outline">Go to Thank You Page</a>
+        <a href="/upload" class="btn btn-outline">Return to Upload Page</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if this is likely after a form submission
+      const checkForFormSubmission = () => {
+        // Check various indicators that this might be after a form submission
+        const formSubmitted = localStorage.getItem('formSubmitted');
+        const urlParams = new URLSearchParams(window.location.search);
+        const fromForm = urlParams.get('from_form');
+        const referer = document.referrer;
+
+        // If any indicator suggests this is after a form submission
+        if (formSubmitted === 'true' || fromForm === 'true' ||
+            referer.includes('formsubmit.co') || referer.includes('upload')) {
+          // Clear the flag
+          try {
+            localStorage.removeItem('formSubmitted');
+          } catch (err) {
+            console.log('Unable to access localStorage');
+          }
+
+          // Show form submission message
+          document.getElementById('formSubmittedMessage').style.display = 'block';
+          document.getElementById('normalErrorPage').style.display = 'none';
+          document.getElementById('redirectMessage').style.display = 'block';
+
+          // Countdown and redirect
+          let count = 3;
+          const countdownElement = document.getElementById('countdown');
+          const countdownInterval = setInterval(() => {
+            count--;
+            countdownElement.textContent = count.toString();
+            if (count <= 0) {
+              clearInterval(countdownInterval);
+              window.location.href = '/upload/thank-you';
+            }
+          }, 1000);
+
+          // Fallback redirect
+          setTimeout(() => {
+            window.location.href = '/upload/thank-you';
+          }, 3500);
+
+          return true;
+        }
+
+        return false;
+      };
+
+      // Execute check
+      if (!checkForFormSubmission()) {
+        // This is a genuine 404, not related to form submission
+        console.log('Regular 404 page shown');
+      }
+    });
+  </script>
+</body>
+</html>

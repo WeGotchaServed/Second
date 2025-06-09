@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Submitted - Redirecting...</title>
+  <meta http-equiv="refresh" content="2;url=/upload/thank-you" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 5px solid #3498db;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 2rem;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="loader"></div>
+    <h1>Form Submitted Successfully</h1>
+    <p>Thank you for submitting your documents. You'll be redirected to our thank you page momentarily...</p>
+    <p>If you are not redirected automatically, <a href="/upload/thank-you">click here</a>.</p>
+  </div>
+
+  <script>
+    // Mark as submitted in localStorage
+    try {
+      localStorage.setItem('formSubmitted', 'true');
+    } catch (err) {
+      // Ignore errors
+    }
+
+    // Redirect to the thank you page (fallback)
+    setTimeout(function() {
+      window.location.href = "/upload/thank-you";
+    }, 2000);
+  </script>
+</body>
+</html>
