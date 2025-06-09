@@ -20,7 +20,7 @@ export default function ThankYouPage() {
           Thank You!
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-xl text-muted-foreground mb-8">
-          Your documents have been successfully submitted to Charlie@WeGotchaServed.com
+          Your documents have been successfully submitted to WeGotchaServed@outlook.com
         </p>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground mb-12">
           Our team will review your submission and contact you within 1 business day.

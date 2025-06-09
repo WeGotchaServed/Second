@@ -33,12 +33,12 @@ export default function UploadPage() {
               <CardHeader className="pb-4 md:pb-6">
                 <CardTitle className="text-xl md:text-2xl">Document Upload Form</CardTitle>
                 <CardDescription className="text-sm md:text-base">
-                  Fill out the form below to upload your documents. Files will be sent to Charlie@WeGotchaServed.com
+                  Fill out the form below to upload your documents. Files will be sent to WeGotchaServed@outlook.com
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form
-                  action="https://formsubmit.co/Charlie@WeGotchaServed.com"
+                  action="https://formsubmit.co/WeGotchaServed@outlook.com"
                   method="POST"
                   encType="multipart/form-data"
                   className="space-y-5 md:space-y-6"
@@ -142,10 +142,10 @@ export default function UploadPage() {
                     <p>
                       If you experience any issues with this form, please email your documents directly to{" "}
                       <a
-                        href="mailto:Charlie@WeGotchaServed.com"
+                        href="mailto:WeGotchaServed@outlook.com"
                         className="text-primary font-medium hover:underline"
                       >
-                        Charlie@WeGotchaServed.com
+                        WeGotchaServed@outlook.com
                       </a>
                     </p>
                   </div>
@@ -197,7 +197,7 @@ export default function UploadPage() {
               <p className="text-muted-foreground">
                 Yes, the maximum file size for uploads is 10MB per file. If your documents exceed this limit,
                 please consider compressing them or sending them in multiple submissions. Alternatively,
-                you can email them directly to Charlie@WeGotchaServed.com.
+                you can email them directly to WeGotchaServed@outlook.com.
               </p>
             </div>
           </div>

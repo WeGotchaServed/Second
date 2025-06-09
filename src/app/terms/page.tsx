@@ -30,7 +30,7 @@ export default function TermsOfService() {
       <h2 className="text-2xl font-semibold mt-6 mb-2">9. Changes to Terms</h2>
       <p className="mb-4">We reserve the right to modify these Terms at any time. Changes will be effective upon posting to the website. Your continued use of our services following the posting of changes constitutes your acceptance of such changes.</p>
       <h2 className="text-2xl font-semibold mt-6 mb-2">10. Contact Us</h2>
-      <p>If you have any questions about these Terms, please contact us at <a href="mailto:Charlie@WeGotchaServed.com" className="text-blue-600 underline">Charlie@WeGotchaServed.com</a>.</p>
+      <p>If you have any questions about these Terms, please contact us at <a href="mailto:WeGotchaServed@outlook.com" className="text-blue-600 underline">WeGotchaServed@outlook.com</a>.</p>
     </div>
   );
 }
