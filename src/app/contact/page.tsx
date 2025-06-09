@@ -66,7 +66,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-bold">Email</h3>
                     <p className="text-muted-foreground">
-                      <a href="mailto:Charlie@WeGotchaServed.com" className="hover:text-primary">Charlie@WeGotchaServed.com</a>
+                      <a href="mailto:WeGotchaServed@outlook.com" className="hover:text-primary">WeGotchaServed@outlook.com</a>
                     </p>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function ContactPage() {
                   </div>
                 ) : (
                   <form
-                    action="https://formsubmit.co/Charlie@WeGotchaServed.com"
+                    action="https://formsubmit.co/WeGotchaServed@outlook.com"
                     method="POST"
                     className="space-y-4"
                     onSubmit={handleFormSubmit}
